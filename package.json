@@ -1,0 +1,12 @@
+{
+  "name": "inventory-360-ui-demo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Standalone interface demonstration with abstract placeholders",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "start": "node scripts/serve.mjs",
+    "test": "node scripts/verify.mjs"
+  }
+}

@@ -1,0 +1,11 @@
+import {readFile,writeFile} from 'node:fs/promises';
+import {createHash} from 'node:crypto';
+const root=new URL('../',import.meta.url);
+const [shell,style,script]=await Promise.all(['src/shell.html','src/demo.css','src/demo.js'].map(path=>readFile(new URL(path,root),'utf8')));
+if(/<\/script/i.test(script)||/<\/style/i.test(style))throw Error('Unexpected closing tag in source');
+const hash=text=>createHash('sha256').update(text).digest('base64');
+const policy=`default-src 'none'; script-src 'sha256-${hash(script)}'; style-src 'sha256-${hash(style)}'; connect-src 'none'; img-src data:; font-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'`;
+const html=shell.replace('__CSP__',policy).replace('__STYLE__',()=>style).replace('__SCRIPT__',()=>script);
+if(/__(?:CSP|STYLE|SCRIPT)__/.test(html))throw Error('Unresolved template marker');
+await writeFile(new URL('index.html',root),html);
+console.log('Built a self-contained static page. No dependencies or external assets.');

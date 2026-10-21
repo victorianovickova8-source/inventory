@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta name="description" content="Автономная демонстрация интерфейса. Только абстрактные заполнители.">
+<meta http-equiv="Content-Security-Policy" content="__CSP__">
+<title>Инвентаризация 360° · Демо интерфейса</title>
+<link rel="icon" href="data:,">
+<style>__STYLE__</style>
+</head>
+<body>
+<header class="topbar">
+ <div class="navigation">
+  <button id="menu-toggle" class="nav-button" aria-expanded="false" aria-controls="section-menu" aria-haspopup="menu">Разделы <span aria-hidden="true">⌄</span></button>
+  <nav id="section-menu" role="menu" aria-label="Разделы" hidden></nav>
+ </div>
+ <button class="brand" data-go="home" aria-label="На главную"><span class="brand-mark">360°</span><span>Инвентаризация<span class="brand-caption">Демонстрация интерфейса</span></span></button>
+ <span class="demo-badge"><i aria-hidden="true"></i> Демо</span>
+</header>
+<main id="main" tabindex="-1"></main>
+<footer class="demo-footer"><span>Только макет интерфейса · Все обозначения условные</span><button id="reset-demo" class="text-button">Сбросить макет</button></footer>
+<dialog id="dialog" aria-labelledby="dialog-title">
+ <div class="dialog-head"><h2 id="dialog-title"></h2><button id="close-dialog" class="icon-button" aria-label="Закрыть окно">×</button></div>
+ <div id="dialog-body"></div>
+</dialog>
+<div id="toast" role="status" aria-live="polite" hidden></div>
+<script>__SCRIPT__</script>
+</body>
+</html>
